@@ -1,0 +1,3 @@
+[submodule "petopia"]
+	path = petopia
+	url = https://github.com/kaiyvesx/pitopya.git
