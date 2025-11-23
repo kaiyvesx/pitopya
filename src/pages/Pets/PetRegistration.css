@@ -1,0 +1,149 @@
+:root{
+  --text:#1f2937;
+  --bg-grad: linear-gradient(180deg, #ffe8d2 0%, #fdeedb 100%);
+  --rail:#ff8c3a; 
+}
+
+html, body, #root{
+  height: 100%;
+  margin: 0;
+  font-family: "Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background: var(--bg-grad);
+  color: var(--text);
+  overflow: hidden;            
+}
+
+.pet-page{
+  height: 100vh;              
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: grid;
+  grid-template-rows: auto auto 1fr; 
+  gap: 8px;
+  position: relative;
+}
+
+
+.pet-header{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+.petopia-pill{
+  height: 54px;
+  width: auto;
+}
+
+
+.pet-title{
+  text-align:center;
+  font-size: clamp(1.1rem, 1rem + 1.1vw, 1.6rem);
+  font-weight: 800;
+  margin: 6px 0 8px;
+}
+
+
+.pet-scroll{
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 72px;         
+  min-height: 0;               
+}
+.pet-scroll::-webkit-scrollbar { width: 0; height: 0; } 
+
+
+.pet-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 28px 36px;
+  justify-items: center;
+}
+
+
+.pet-img-btn{
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  transition: transform .12s ease, filter .2s ease;
+}
+.pet-img-btn:hover{ transform: translateY(-4px); filter: brightness(1.03); }
+
+
+.pet-img-only{
+  display: block;
+  width: clamp(160px, 16vw, 220px); 
+  height: auto;
+  pointer-events: none; 
+  user-select: none;
+}
+
+
+.custom-rail{
+  position: fixed;
+  right: 18px;
+  top: 120px;
+  bottom: 32px;
+  width: 32px;
+  display: grid;
+  justify-items: center;
+  pointer-events: auto;        
+  z-index: 10;
+}
+
+
+.rail-track{
+  position: relative;         
+  width: 16px;
+  height: 100%;
+  background: var(--rail);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
+}
+
+
+.rail-stick{
+  position: absolute;
+  top: 0;                      
+  left: 2px;                   
+  width: 12px;
+  height: 56px;                
+  border-radius: 10px;
+  background: #f07225;         
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.35),
+    0 2px 6px rgba(0,0,0,.18);
+  cursor: grab;
+}
+.rail-stick:active{ cursor: grabbing; }
+
+
+.rail-knob{
+  position: absolute;
+  top: 0;
+  left: 50%;                       
+  transform: translate(-50%, 0);   
+  width: 80px;                     
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;        
+  box-shadow: 0 12px 20px rgba(0,0,0,.18);
+  cursor: grab;
+  z-index: 4;                      
+}
+.rail-knob.dragging { cursor: grabbing; }
+
+
+
+
+@media (max-width: 1100px){
+  .pet-grid{ grid-template-columns: repeat(3, minmax(180px, 1fr)); }
+}
+@media (max-width: 780px){
+  .pet-grid{ grid-template-columns: repeat(2, minmax(160px, 1fr)); gap: 22px 26px; }
+  .pet-img-only{ width: clamp(150px, 40vw, 200px); }
+  .custom-rail{ display: none; } 
+}

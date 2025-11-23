@@ -1,0 +1,99 @@
+.load-wrap {
+  background: #F6DCC1;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: fadeOut 1s ease 5s forwards;
+}
+
+.loader {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FF9A3E, #FFC02D);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12), inset 0 0 0 2px rgba(0, 0, 0, 0.04);
+}
+
+.mask {
+  position: absolute;
+  inset: 14px;
+  background: #F6DCC1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.waves {
+  position: absolute;
+  inset: 0;
+}
+
+.wave1,
+.wave2 {
+  transform: translateY(100%);
+}
+
+.wave1 {
+  animation: rise 4s ease-in-out forwards;
+}
+
+.wave2 {
+  animation: rise 4s ease-in-out .15s forwards;
+}
+
+.logo-fade {
+  position: absolute;
+  width: 56%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: logoIn 1s ease 4s forwards;
+}
+
+.loading-text {
+  margin-top: 26px;
+  font-weight: 800;
+  font-size: 22px;
+  color: #6b2d10;
+  letter-spacing: 0.5px;
+  animation: float 1.6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+ 100% { transform: translateY(0px); }
+}
+
+
+@keyframes rise {
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes logoIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
